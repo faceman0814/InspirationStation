@@ -3,7 +3,7 @@ using FaceManUtils.Entities;
 
 namespace Core.UserModule;
 
-[Table(AppConst.TablePrefix + "User")]
+[Table(AppConsts.TablePrefix + "User")]
 public class User: FullAuditedEntity<string>
 {
     /// <summary>

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Concurrent;
+using FaceMan.Utils.Extensions;
 using FaceManUtils.Extensions;
 using Microsoft.Extensions.Configuration;
 

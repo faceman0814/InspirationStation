@@ -11,7 +11,7 @@ public static class AppSettingsExtensions
     /// <returns></returns>
     public static string ConnectionStringsDefault(this IConfiguration configuration)
     {
-        return configuration.GetConnectionString(AppConst.System.ConnectionStrings_Default);
+        return configuration.GetConnectionString(AppConsts.System.ConnectionStrings_Default);
 
     }
 }

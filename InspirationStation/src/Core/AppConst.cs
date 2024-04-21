@@ -1,6 +1,6 @@
 ﻿namespace Core;
 
-public abstract class AppConst
+public abstract class AppConsts
 {
     /// <summary>
     /// 默认语言
@@ -10,12 +10,13 @@ public abstract class AppConst
     /// <summary>
     /// 语言文件的名称
     /// </summary>
-    public const string LocalizationSourceName = "CaiBlogApi";
+    public const string LocalizationSourceName = "InspirationStation";
     
     /// <summary>
     /// 表的前缀名称
     /// </summary>
     public const string TablePrefix = "FaceMan_";
+    public static bool SwaggerUiEnabled = true;
     
     /// <summary>
     /// Token过期时间 默认1天

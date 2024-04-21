@@ -1,4 +1,5 @@
-﻿using FaceManUtils.Extensions;
+﻿using FaceMan.Utils.Extensions;
+using FaceManUtils.Extensions;
 
 namespace Core.Helpers;
 
