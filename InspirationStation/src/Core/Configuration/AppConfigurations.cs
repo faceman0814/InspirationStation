@@ -52,8 +52,4 @@ public static class AppConfigurations
 
         return builder.Build();
     }
-
-
-
-
 }

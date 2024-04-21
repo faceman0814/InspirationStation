@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using CaiBlogApi.Core;
 using FaceManUtils.Entities;
 
 namespace Core.UserModule;
