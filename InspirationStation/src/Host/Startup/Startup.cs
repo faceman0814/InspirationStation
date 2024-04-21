@@ -1,6 +1,6 @@
 ﻿using Core.Configuration;
 
-namespace InspirationStation.Startup;
+namespace Host.Startup;
 
 public class Startup
 {
@@ -34,7 +34,7 @@ public class Startup
 
         app.UseEndpoints(endpoints =>
         {
-            // endpoints.MapRazorPages();
+            endpoints.MapRazorPages();
         });
     }
 }

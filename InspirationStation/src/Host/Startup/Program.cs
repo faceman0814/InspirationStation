@@ -1,4 +1,4 @@
-using InspirationStation.Startup;
+using Host.Startup;
 using Microsoft.AspNetCore;
 
 public class Program
