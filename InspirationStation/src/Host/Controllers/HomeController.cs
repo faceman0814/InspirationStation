@@ -1,13 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FaceMan.Utils.Auditing;
+using Microsoft.AspNetCore.Mvc;
 
-namespace Host;
+namespace Host.Controllers;
 
-public class Basic : Controller
+public class HomeController : Controller
 {
-    // GET
+    [DisableAuditing]
     public IActionResult Index()
     {
-        return View();
+        // return RedirectToAction("Index", "Monitor");
+        return Redirect("/swagger");
     }
     
     // POST

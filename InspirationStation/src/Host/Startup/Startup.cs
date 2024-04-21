@@ -1,9 +1,7 @@
-﻿using System.Xml;
-using Core;
+﻿using Core;
 using Core.Configuration;
 using EntityFramework.DbContext;
 using FaceMan.Utils.Swagger;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -45,7 +43,7 @@ public class Startup
         // services.AddAuthentication();
         // services.AddAuthorization();
         // 配置SwaggerUI
-        ConfigureSwaggerUIService(services);
+        ConfigureSwaggerUiService(services);
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -79,7 +77,10 @@ public class Startup
         });
 
         //配置路由
-        app.UseEndpoints(endpoints => { endpoints.MapRazorPages(); });
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}");
+        });
 
         #region 配置swagerui
 
@@ -98,14 +99,12 @@ public class Startup
                 options.EnableDeepLinking();
                 options.DocExpansion(DocExpansion.None);
                 
-                // options.IndexStream = () => this.GetType().Assembly
-                //     .GetManifestResourceStream("Host.wwwroot.swagger.monitor.index.html");
-            }); // URL: /swagger
-        } // Enable middleware to serve generated Swagger as a JSON endpoint
+            }); 
+        } 
         #endregion 配置swagerui
     }
 
-    private void ConfigureSwaggerUIService(IServiceCollection services)
+    private void ConfigureSwaggerUiService(IServiceCollection services)
     {
         #region 配置SwaggerUI
 
@@ -123,7 +122,7 @@ public class Startup
                         TermsOfService = new Uri("https://github.com/faceman0814"),
                         Contact = new OpenApiContact
                         {
-                            Name = "InspirationStation.faceman.cn",
+                            Name = "InspirationStation",
                             Email = "1002784867@qq.com",
                             Url = new Uri("https://blog.faceman.cn")
                         },
