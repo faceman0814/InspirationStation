@@ -1,13 +1,11 @@
-﻿using System;
-
-namespace FaceManUtils.Timing;
+﻿namespace FaceMan.Utils.Timing;
 
 public static class Clock
 {
     private static IClockProvider _provider;
 
     /// <summary>
-    /// 这个对象是用来执行所有 <see cref="T:FaceManUtils.Timing.Clock" /> 操作.
+    /// 这个对象是用来执行所有 <see cref="T:FaceMan.Utils.Timing.Clock" /> 操作.
     /// Default value: <see cref="T:FaceManUtils.Timing.UnspecifiedClockProvider" />.
     /// </summary>
     public static IClockProvider Provider

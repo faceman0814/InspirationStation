@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace FaceManUtils.Timing;
+﻿namespace FaceMan.Utils.Timing;
 
 public interface IClockProvider
 {

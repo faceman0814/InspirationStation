@@ -1,4 +1,4 @@
-﻿namespace FaceManUtils.Timing;
+﻿namespace FaceMan.Utils.Timing;
 
 public static class ClockProviders
 {

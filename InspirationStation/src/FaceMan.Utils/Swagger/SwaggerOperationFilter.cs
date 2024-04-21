@@ -7,10 +7,10 @@ namespace FaceMan.Utils.Swagger;
 public class SwaggerOperationFilter : IOperationFilter
 {
     /// <summary>
-    /// 将OpenApiOperation对象中的参数属性Schema设置为对应枚举类型的模式。如果参数不是枚举类型，则跳过处理。
+    /// 将OpenApiOperation对象中的参数中的枚举类型替换为对应的schema。
     /// </summary>
-    /// <param name="operation"></param>
-    /// <param name="context"></param>
+    /// <param name="operation"> OpenApiOperation对象，表示一个API操作。</param>
+    /// <param name="context">OperationFilterContext对象，包含了操作筛选器的上下文信息。</param>
     public void Apply(OpenApiOperation operation, OperationFilterContext context)
     {
         if (operation.Parameters == null)

@@ -1,6 +1,6 @@
 ﻿using System;
 using FaceMan.Utils.Entities;
-using FaceManUtils.Timing;
+using FaceMan.Utils.Timing;
 
 namespace FaceManUtils.Entities;
 
