@@ -1,13 +1,14 @@
 ﻿using Core.UserModule;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace EntityFramework.DbContext;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-public class InspirationStationDbContext(IConfiguration appConfiguration) : DbContext
+
+public class InspirationStationDbContext : DbContext
 {
     public DbSet<User> User { get; set; }
-    
-    
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -18,12 +19,8 @@ public class InspirationStationDbContext(IConfiguration appConfiguration) : DbCo
         modelBuilder.ApplyConfigurationsFromAssembly((this.GetType().Assembly));
     }
     
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    public InspirationStationDbContext(DbContextOptions<InspirationStationDbContext> options) : base(options)
     {
-        optionsBuilder.UseNpgsql("Server=data.dev.52abp.com; Database=InspirationStation;User Id=root;Password=bb123456??;");
-        // if (!optionsBuilder.IsConfigured)
-        // {
-        //     optionsBuilder.UseNpgsql(appConfiguration.GetConnectionString("Host=data.dev.52abp.com; Database=InspirationStation;User Id=root;Password=bb123456??;"));
-        // }
     }
 }
+

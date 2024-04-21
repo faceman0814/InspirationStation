@@ -39,7 +39,9 @@ public static class AppConfigurations
             .AddJsonFile("appsettings.json", true, true);
 
         if (!String.IsNullOrWhiteSpace(environmentName))
+        {
             builder = builder.AddJsonFile($"appsettings.{environmentName}.json", true);
+        }
 
         builder = builder.AddEnvironmentVariables();
 
