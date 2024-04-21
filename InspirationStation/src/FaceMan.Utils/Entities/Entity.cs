@@ -1,14 +1,24 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Reflection;
+using FaceManUtils.Entities;
 
-namespace FaceManUtils.Entities;
+namespace FaceMan.Utils.Entities;
 
+/// <summary>
+/// 表示具有唯一标识符的实体。
+/// </summary>
+/// <typeparam name="TPrimaryKey"> 实体的主键类型。</typeparam>
 public class Entity<TPrimaryKey> : IEntity<TPrimaryKey>
 {
     [MaxLength(32)]
     [Key]
     public virtual required TPrimaryKey Id { get; set; }
 
+    /// <summary>
+    /// 重写Equals方法，比较两个实体是否相等。
+    /// </summary>
+    /// <param name="obj"></param>
+    /// <returns></returns>
     public virtual bool EntityEquals(object? obj)
     {
         // 如果对象为空或不是Entity<TPrimaryKey>类型，则返回false。
@@ -21,14 +31,18 @@ public class Entity<TPrimaryKey> : IEntity<TPrimaryKey>
         var entity = (Entity<TPrimaryKey>)obj;
         var type1 = this.GetType();
         var type2 = entity.GetType();
-        return (type1.GetTypeInfo().IsAssignableFrom(type2) || type2.GetTypeInfo().IsAssignableFrom(type1)) &&
+        // 类型不相等，则返回false。
+        return (type1.GetTypeInfo().IsAssignableFrom(type2) ||
+                type2.GetTypeInfo().IsAssignableFrom(type1)) &&
                this.Id!.Equals((object)entity.Id!);
-
     }
-
-    public override string ToString()
+    
+    /// <summary>
+    /// 重写GetHashCode方法，返回实体的哈希值。（哈希码是一个整数值，它代表了对象在内存中的唯一标识。）
+    /// </summary>
+    /// <returns></returns>
+    public override int GetHashCode()
     {
-        // 返回当前对象的类型名称和标识符的字符串表示形式
-        return $"[{(object)this.GetType().Name} {(object)Id!}]";
+        return this.Id!.GetHashCode();
     }
 }

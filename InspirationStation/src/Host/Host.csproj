@@ -4,6 +4,9 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <GenerateDocumentationFile>True</GenerateDocumentationFile>
+        <DocumentationFile>D:\FaceMan\InspirationStation\InspirationStation\src\Host\wwwroot\swagger\InspirationStation.xml</DocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>

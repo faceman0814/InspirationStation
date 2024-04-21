@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace FaceManUtils.Entities;
+﻿namespace FaceMan.Utils.Entities;
 
 /// <summary>
 /// 创建审计接口

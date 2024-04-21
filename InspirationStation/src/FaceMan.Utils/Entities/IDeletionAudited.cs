@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace FaceManUtils.Entities;
+﻿namespace FaceMan.Utils.Entities;
 
 /// <summary>
 /// 删除审计接口

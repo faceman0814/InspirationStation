@@ -1,4 +1,4 @@
-﻿namespace FaceManUtils.Entities;
+﻿namespace FaceMan.Utils.Entities;
 
 /// <summary>
 /// 实体接口

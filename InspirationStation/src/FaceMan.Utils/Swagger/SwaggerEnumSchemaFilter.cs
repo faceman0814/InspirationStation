@@ -9,12 +9,17 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 namespace FaceMan.Utils.Swagger;
 
 /// <summary>
-/// 枚举处理器，将会把所有的枚举信息放到 <see cref="P:Yoyo.Pro.EnumHelper.EnumConsts.BaseEnumMaps" /> 中
+/// 枚举处理器，将会把所有的枚举信息放到 <see cref="P:EnumHelper.EnumConsts.BaseEnumMaps" /> 中
 /// </summary>
 public class SwaggerEnumSchemaFilter : ISchemaFilter
 {
     private static readonly Type _displayNameAttributeType = typeof (DescriptionAttribute);
 
+    /// <summary>
+    /// 用于生成Swagger文档的Schema过滤器方法
+    /// </summary>
+    /// <param name="schema"></param>
+    /// <param name="context"></param>
     public void Apply(OpenApiSchema schema, SchemaFilterContext context)
     {
         Type type = context.Type;

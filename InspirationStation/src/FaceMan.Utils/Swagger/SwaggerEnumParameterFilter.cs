@@ -7,8 +7,16 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace FaceMan.Utils.Swagger;
 
+/// <summary>
+///  将枚举名称添加到枚举参数架构的筛选器。
+/// </summary>
  public class SwaggerEnumParameterFilter : IParameterFilter
   {
+    /// <summary>
+    /// 对 OpenApiParameter 进行筛选和处理。
+    /// </summary>
+    /// <param name="parameter"></param>
+    /// <param name="context"></param>
     public void Apply(OpenApiParameter parameter, ParameterFilterContext context)
     {
       Type type1 = Nullable.GetUnderlyingType(context.ApiParameterDescription.Type);
@@ -32,6 +40,12 @@ namespace FaceMan.Utils.Swagger;
       }
     }
 
+    /// <summary>
+    ///  向OpenAPI参数中添加一个枚举类型的规范
+    /// </summary>
+    /// <param name="parameter"></param>
+    /// <param name="type"></param>
+    /// <param name="context"></param>
     private static void AddEnumSpec(
       OpenApiParameter parameter,
       Type type,
@@ -46,6 +60,12 @@ namespace FaceMan.Utils.Swagger;
       orAdd.Extensions.Add("x-enumNames", (IOpenApiExtension) openApiArray);
     }
 
+    /// <summary>
+    /// 为 OpenAPI 参数添加枚举类型的描述。
+    /// </summary>
+    /// <param name="parameter"></param>
+    /// <param name="type"></param>
+    /// <param name="context"></param>
     private static void AddEnumParamSpec(
       OpenApiParameter parameter,
       Type type,

@@ -3,14 +3,14 @@
 public static class DictionaryExtensions
   {
     /// <summary>
-    /// This method is used to try to get a value in a dictionary if it does exists.
+    /// 从字典中尝试获取指定键的值，并将其转换为指定类型 T。
     /// </summary>
-    /// <typeparam name="T">Type of the value</typeparam>
-    /// <param name="dictionary">The collection object</param>
+    /// <typeparam name="T">值的类型</typeparam>
+    /// <param name="dictionary">集合对象</param>
     /// <param name="key">Key</param>
-    /// <param name="value">Value of the key (or default value if key not exists)</param>
-    /// <returns>True if key does exists in the dictionary</returns>
-    internal static bool TryGetValue<T>(
+    /// <param name="value">键的值（如果键不存在，则为默认值）</param>
+    /// <returns>如果字典中确实存在键，则为 True</returns>
+    public static bool TryGetValue<T>(
       this IDictionary<string, object> dictionary,
       string key,
       out T value)
@@ -26,13 +26,13 @@ public static class DictionaryExtensions
     }
 
     /// <summary>
-    /// Gets a value from the dictionary with given key. Returns default value if can not find.
+    /// 从字典中获取指定键的值，如果找不到，则返回默认值。
     /// </summary>
-    /// <param name="dictionary">Dictionary to check and get</param>
-    /// <param name="key">Key to find the value</param>
-    /// <typeparam name="TKey">Type of the key</typeparam>
-    /// <typeparam name="TValue">Type of the value</typeparam>
-    /// <returns>Value if found, default if can not found.</returns>
+    /// <param name="dictionary">要检查和获取的字典</param>
+    /// <param name="key">查找值的键</param>
+    /// <typeparam name="TKey">密钥的类型</typeparam>
+    /// <typeparam name="TValue">值的类型</typeparam>
+    /// <returns>如果找到，则为值，如果找不到，则为默认值。</returns>
     public static TValue GetOrDefault<TKey, TValue>(
       this IDictionary<TKey, TValue> dictionary,
       TKey key)
@@ -42,14 +42,14 @@ public static class DictionaryExtensions
     }
 
     /// <summary>
-    /// Gets a value from the dictionary with given key. Returns default value if can not find.
+    /// 此方法用于尝试获取字典中的值 （如果该值确实存在），如果找不到则使用指定的工厂方法创建值并添加到字典中它并返回。
     /// </summary>
-    /// <param name="dictionary">Dictionary to check and get</param>
-    /// <param name="key">Key to find the value</param>
-    /// <param name="factory">A factory method used to create the value if not found in the dictionary</param>
-    /// <typeparam name="TKey">Type of the key</typeparam>
-    /// <typeparam name="TValue">Type of the value</typeparam>
-    /// <returns>Value if found, default if can not found.</returns>
+    /// <param name="dictionary">要检查和获取的字典</param>
+    /// <param name="key">查找值的键</param>
+    /// <param name="factory">用于创建值（如果在字典中找不到）的工厂方法</param>
+    /// <typeparam name="TKey">密钥的类型</typeparam>
+    /// <typeparam name="TValue">值的类型</typeparam>
+    /// <returns>如果找到，则为值，如果找不到，则为默认值。</returns>
     public static TValue GetOrAdd<TKey, TValue>(
       this IDictionary<TKey, TValue> dictionary,
       TKey key,
@@ -60,14 +60,14 @@ public static class DictionaryExtensions
     }
 
     /// <summary>
-    /// Gets a value from the dictionary with given key. Returns default value if can not find.
+    /// 此方法用于尝试获取字典中的值 （如果该值确实存在），如果找不到则使用指定的工厂方法创建值并添加到字典中它并返回。
     /// </summary>
-    /// <param name="dictionary">Dictionary to check and get</param>
-    /// <param name="key">Key to find the value</param>
-    /// <param name="factory">A factory method used to create the value if not found in the dictionary</param>
-    /// <typeparam name="TKey">Type of the key</typeparam>
-    /// <typeparam name="TValue">Type of the value</typeparam>
-    /// <returns>Value if found, default if can not found.</returns>
+    /// <param name="dictionary">要检查和获取的字典</param>
+    /// <param name="key">查找值的键</param>
+    /// <param name="factory">用于创建值（如果在字典中找不到）的工厂方法</param>
+    /// <typeparam name="TKey">密钥的类型</typeparam>
+    /// <typeparam name="TValue">值的类型</typeparam>
+    /// <returns>如果找到值，则为值，如果找不到，则为默认值.</returns>
     public static TValue GetOrAdd<TKey, TValue>(
       this IDictionary<TKey, TValue> dictionary,
       TKey key,

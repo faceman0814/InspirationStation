@@ -9,7 +9,7 @@ namespace FaceMan.Utils.Swagger
     public static class SwaggerExtensions
     {
         /// <summary>
-        /// Injects ABP base URI into the index.html page
+        /// 在SwaggerUIOptions对象中注入一个基础URL路径。它将给定的pathBase参数添加到options.HeadContent属性中的JavaScript代码中，以便在Swagger UI加载时设置abp.appPath变量。
         /// </summary>
         /// <param name="options"> </param>
         /// <param name="pathBase"> base path (URL) to application API </param>
@@ -24,7 +24,8 @@ namespace FaceMan.Utils.Swagger
 
         /// <summary>
         /// https://github.com/domaindrivendev/Swashbuckle.AspNetCore/issues/752#issuecomment-467817189
-        /// When Swashbuckle.AspNetCore 5.0 is released, we can remove it.
+        /// 当 Swashbuckle.AspNetCore 5.0 发布时，我们可以将其删除。
+        /// 自定义Swagger的默认模式ID选择器。
         /// </summary>
         /// <param name="options"> </param>
         public static void CustomDefaultSchemaIdSelector(this SwaggerGenOptions options)

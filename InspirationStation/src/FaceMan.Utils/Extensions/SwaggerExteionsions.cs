@@ -19,7 +19,7 @@ public static class SwaggerExteionsions
     }
 
     /// <summary>
-    /// 配置使用 <see cref="T:Yoyo.Pro.Swagger.SwaggerEnumParameterFilter" />
+    /// 配置使用 <see cref="T:Swagger.SwaggerEnumParameterFilter" />
     /// </summary>
     /// <param name="options"></param>
     /// <returns></returns>
@@ -30,7 +30,7 @@ public static class SwaggerExteionsions
     }
 
     /// <summary>
-    /// 配置使用 <see cref="T:Yoyo.Pro.Swagger.SwaggerOperationIdFilter" />
+    /// 配置使用 <see cref="T:Swagger.SwaggerOperationIdFilter" />
     /// </summary>
     /// <param name="options"></param>
     /// <returns></returns>
@@ -41,7 +41,7 @@ public static class SwaggerExteionsions
     }
 
     /// <summary>
-    /// 配置使用 <see cref="T:Yoyo.Pro.Swagger.SwaggerOperationFilter" />
+    /// 配置使用 <see cref="T:Swagger.SwaggerOperationFilter" />
     /// </summary>
     /// <param name="options"></param>
     /// <returns></returns>
