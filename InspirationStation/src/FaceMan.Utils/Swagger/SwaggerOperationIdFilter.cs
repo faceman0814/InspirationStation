@@ -7,7 +7,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 namespace FaceMan.Utils.Swagger;
 
 
-public abstract class SwaggerOperationIdFilter : IOperationFilter
+public  class SwaggerOperationIdFilter : IOperationFilter
 {
     /// <summary>
     /// 为给定的OpenApiOperation对象设置OperationId属性。
