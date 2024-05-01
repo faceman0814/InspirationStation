@@ -8,7 +8,7 @@ public interface IModificationAudited
     /// <summary>
     /// 修改者ID
     /// </summary>
-    string LastModifierUserId { get; set; }
+    string? LastModifierUserId { get; set; }
 
     /// <summary>
     /// 修改时间

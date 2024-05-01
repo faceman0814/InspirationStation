@@ -1,6 +1,7 @@
 ﻿using Core;
 using Core.Configuration;
 using EntityFramework.DbContext;
+using EntityFramework.Repository;
 using FaceMan.Utils.Swagger;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -24,11 +25,13 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddRazorPages();
-        
+     
         services.AddDbContext<InspirationStationDbContext>(options =>
         {
             options.UseNpgsql(_appConfiguration.GetConnectionString("Default"));
         });
+        
+        services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
         services.AddCors(options =>
         {

@@ -13,9 +13,9 @@ public abstract class FullAuditedEntity<TPrimaryKey>
         IDeletionAudited,
         IModificationAudited
 {
-    public bool IsDeleted { get; set; }
-    public string DeleterUserId { get; set; }
+    public bool IsDeleted { get; set; }=false;
+    public string? DeleterUserId { get; set; }
     public DateTime? DeletionTime { get; set; }
-    public string LastModifierUserId { get; set; }
+    public string? LastModifierUserId { get; set; }
     public DateTime? LastModificationTime { get; set; }
 }

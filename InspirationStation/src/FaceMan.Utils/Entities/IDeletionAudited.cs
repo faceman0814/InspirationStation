@@ -12,7 +12,7 @@ public interface IDeletionAudited
     /// <summary>
     /// 删除者Id
     /// </summary>
-    string DeleterUserId { get; set; }
+    string? DeleterUserId { get; set; }
     /// <summary>
     /// 删除时间
     /// </summary>
