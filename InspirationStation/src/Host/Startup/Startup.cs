@@ -1,7 +1,9 @@
-﻿using Core;
+﻿using System.Reflection;
+using Core;
 using Core.Configuration;
 using EntityFramework.DbContext;
 using EntityFramework.Repository;
+using FaceMan.Utils.Entities;
 using FaceMan.Utils.Swagger;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -31,8 +33,9 @@ public class Startup
             options.UseNpgsql(_appConfiguration.GetConnectionString("Default"));
         });
         
-        services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-
+        // 将泛型仓储接口和对应的实现类注册到依赖注入容器中，以便在应用程序中使用依赖注入获取相应的仓储实例，用于对数据库进行操作。
+        services.AddScoped(typeof(IRepository<,>), typeof(Repository<,>));
+        
         services.AddCors(options =>
         {
             options.AddDefaultPolicy(builder =>
@@ -48,7 +51,6 @@ public class Startup
         // 配置SwaggerUI
         ConfigureSwaggerUiService(services);
     }
-
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
         if (_env.IsDevelopment())

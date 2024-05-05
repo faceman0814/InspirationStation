@@ -1,6 +1,7 @@
 ﻿using FaceMan.Utils.Entities;
 
 namespace FaceManUtils.Entities;
+
 using System;
 
 /// <summary>
@@ -8,12 +9,11 @@ using System;
 /// </summary>
 /// <typeparam name="TPrimaryKey"></typeparam>
 [Serializable]
-public abstract class FullAuditedEntity<TPrimaryKey> 
-    : CreationAuditedEntity<TPrimaryKey>,
-        IDeletionAudited,
-        IModificationAudited
+public class FullAuditedEntity<TPrimaryKey>
+    : CreationAuditedEntity<TPrimaryKey>, 
+        IFullAuditedEntity<TPrimaryKey>
 {
-    public bool IsDeleted { get; set; }=false;
+    public bool IsDeleted { get; set; } = false;
     public string? DeleterUserId { get; set; }
     public DateTime? DeletionTime { get; set; }
     public string? LastModifierUserId { get; set; }
