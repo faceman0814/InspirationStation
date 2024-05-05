@@ -14,6 +14,14 @@ public class Entity<TPrimaryKey> : IEntity<TPrimaryKey>
     [Key]
     public virtual required TPrimaryKey Id { get; set; }
 
+    public virtual bool IsTransient()
+    {
+        if (EqualityComparer<TPrimaryKey>.Default.Equals(this.Id, default (TPrimaryKey)))
+            return true;
+        if (typeof (TPrimaryKey) == typeof (int))
+            return Convert.ToInt32((object) this.Id) <= 0;
+        return typeof (TPrimaryKey) == typeof (long) && Convert.ToInt64((object) this.Id) <= 0L;
+    }
     /// <summary>
     /// 重写Equals方法，比较两个实体是否相等。
     /// </summary>

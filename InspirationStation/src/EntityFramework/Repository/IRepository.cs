@@ -8,7 +8,8 @@ public interface IRepository<TEntity, TPrimaryKey> :  ITransientDependency where
 {
     IQueryable<TEntity> GetAll();
     IQueryable<TEntity> GetAllIncluding(
-        params Expression<Func<TEntity, object>>[]? propertySelectors);
+        // params Expression<Func<TEntity, object>>[]? propertySelectors
+        );
     List<TEntity> GetAllList();
     Task<List<TEntity>> GetAllListAsync();
     List<TEntity> GetAllList(Expression<Func<TEntity, bool>> predicate);

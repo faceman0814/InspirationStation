@@ -43,31 +43,20 @@ public class Repository<TEntity, TPrimaryKey> : IRepository<TEntity, TPrimaryKey
     }
 
 
-
-    public IQueryable<TEntity> GetAllIncluding(params Expression<Func<TEntity, object>>[]? propertySelectors)
+    public IQueryable<TEntity> GetAllIncluding()
     {
         IQueryable<TEntity> query = _context.Set<TEntity>();
 
-        if (propertySelectors == null || propertySelectors.Length == 0)
+        // 如果没有提供任何选择器，则尝试包含所有导航属性
+        var navigations = _context.Model.FindEntityType(typeof(TEntity))
+            .GetNavigations()
+            .Select(e => e.Name);
+
+        foreach (string navigationName in navigations)
         {
-            // 如果没有提供任何选择器，则尝试包含所有导航属性
-            var navigations = _context.Model.FindEntityType(typeof(TEntity))
-                .GetNavigations()
-                .Select(e => e.Name);
-        
-            foreach (string navigationName in navigations)
-            {
-                query = query.Include(navigationName);
-            }
+            query = query.Include(navigationName);
         }
-        else
-        {
-            foreach (var propertySelector in propertySelectors)
-            {
-                // 递归地包括所有级别的导航属性
-                query = IncludeProperty(query, propertySelector.Body);
-            }
-        }
+
         return query;
     }
 
@@ -87,7 +76,8 @@ public class Repository<TEntity, TPrimaryKey> : IRepository<TEntity, TPrimaryKey
             var propertyType = ((PropertyInfo)memberExpression.Member).PropertyType;
 
             var genericIncludeMethod = includeMethod.MakeGenericMethod(entityType, propertyType);
-            query = (IQueryable<TEntity>)genericIncludeMethod.Invoke(null, new object[] { query, propertyExpression });
+            // query = (IQueryable<TEntity>)genericIncludeMethod.Invoke(null,
+            //     new object[] { query, propertyExpression });
 
             // 检查是否有嵌套的ThenInclude
             if (propertyType.IsGenericType && typeof(IEnumerable).IsAssignableFrom(propertyType))
@@ -95,7 +85,7 @@ public class Repository<TEntity, TPrimaryKey> : IRepository<TEntity, TPrimaryKey
                 // 实体集合类型，我们需要处理集合中的每个元素
                 var collectionItemType = propertyType.GetGenericArguments()[0];
                 var includeProperties = collectionItemType.GetProperties()
-                    .Where(p => p.PropertyType.Namespace == "YourEntityNamespace").ToList();
+                    .Where(p => p.PropertyType.Namespace.Contains("Core")).ToList();
 
                 foreach (var includeProperty in includeProperties)
                 {
@@ -238,7 +228,8 @@ public class Repository<TEntity, TPrimaryKey> : IRepository<TEntity, TPrimaryKey
         throw new NotImplementedException();
     }
 
-    Task<TEntity> IRepository<TEntity, TPrimaryKey>.UpdateAsync(TEntity entity)
+    Task<TEntity> IRepository<TEntity, TPrimaryKey>.
+        UpdateAsync(TEntity entity)
     {
         throw new NotImplementedException();
     }

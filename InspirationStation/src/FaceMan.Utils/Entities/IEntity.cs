@@ -10,4 +10,10 @@ public interface IEntity<TPrimaryKey>
     /// 主键
     /// </summary>
     TPrimaryKey Id { get; set; }
+    
+    /// <summary>
+    /// 判断是否为临时对象
+    /// </summary>
+    /// <returns></returns>
+    bool IsTransient();
 }

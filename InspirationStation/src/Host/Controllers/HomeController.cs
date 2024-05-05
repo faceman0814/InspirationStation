@@ -30,7 +30,7 @@ public class HomeController : Controller
     [Route("basic")]
     public async Task<IActionResult> Index(string name, string email)
     {
-        var res = await _userRepository.GetAllIncluding(t=>t.OrganizationUnit).ToListAsync();
+        var res = await _userRepository.GetAllIncluding().ToListAsync();
         // var user = new User
         // {
         //     Name = name, Email = email, Password = "password", PhoneNumber = "1234567890",
@@ -52,6 +52,7 @@ public class HomeController : Controller
         {
             Name = name,
             Code = code,
+            ParentOrgUnitID = "ad066bb2b0cb4fbca7bd31a658a17b80",
             CreatorUserId = Guid.NewGuid().ToString("N"),
             Id = Guid.NewGuid().ToString("N")
         };

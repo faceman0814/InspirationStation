@@ -30,4 +30,10 @@ public class OrganizationUnit : FullAuditedEntity<string>
     /// 组织单元状态
     /// </summary>
     public bool Status { get; set; } = true;
+    
+    // 父组织单元
+    public virtual OrganizationUnit Parent { get; set; }
+    
+    // 子组织单元
+    public virtual List<OrganizationUnit> Children { get; set; } = new List<OrganizationUnit>();
 }
